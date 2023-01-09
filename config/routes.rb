@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   }
   get '/u/:id', to: 'users#profile', as: 'user'
 
-  resources :posts
+  #  /posts/1/comments/4
+  resources :posts do
+    resources :comments
+  end
   get 'about', to: 'pages#about' #this means /about will take us to pages controller about action
   root "pages#home"
 end
